@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="jakarta.faces.facelets"
+    xmlns:h="jakarta.faces.html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" 
+    template="/template.xhtml">
+    <ui:define name="content" >
+        <p:panelGrid columns="3" layout="grid" id="panel">
+            <h:outputText value="Your nickname please" />
+            <p:inputText id="welcomeInput" value="#{welcomeMBean.text}" />
+            <p:commandButton id="welcomeButton" value="Submit" update="welcomeOutput" actionListener="#{welcomeMBean.find()}" process="@this welcomeInput datatable"/>
+            <h:outputText id="welcomeOutput" value="#{welcomeMBean.text}" />
+
+            <p:dataTable id="datatable" var="item" value="#{welcomeMBean.dataList}"
+                         paginator="false" rowKey="#{item}">
+                <p:column style="width:2rem" ariaHeaderText="Row Toggler">
+                    <p:rowToggler/>
+                </p:column>
+                <p:column headerText="item" style="width: 10%">
+                    <h:outputText value="#{item}" />
+                </p:column>
+                <p:rowExpansion>
+                    <p:dataTable var="afast" value="#{welcomeMBean.getDetails(item)}" paginator="false" 
+                                 rowKey="#{detail}">
+                        <f:facet name="header">
+                            Detail
+                        </f:facet>
+
+                        <p:column headerText="Detail">
+                            <h:outputText value="#{detail}"  />	
+                        </p:column>
+                    </p:dataTable>
+                </p:rowExpansion>
+            </p:dataTable>
+        </p:panelGrid>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,13 @@
+spring:
+  threads:
+    virtual:
+      enabled: true    
+joinfaces:
+  primefaces:
+    theme: vela
+tomcat:
+  version: @tomcat.version@
+jetty:
+  version: @jetty.version@
+undertow:
+  version: @undertow.version@
