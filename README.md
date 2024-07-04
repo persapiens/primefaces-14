@@ -9,7 +9,7 @@ This action is not triggered with primefaces 13.
 
 **Why Faces calls getDetails with empty string at RESTORE_VIEW phase with PrimeFaces 14?**
 
-**What is the right behaviour (PrimeFaces 13 or PrimeFaces 14)?**
+**What is the right behavior (PrimeFaces 13 or PrimeFaces 14)?**
 
 ## How to reproduce the difference
 
